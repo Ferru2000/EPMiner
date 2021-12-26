@@ -1,0 +1,13 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'MainTest'
+        archivesBaseName = 'Client'
+    }
+}
+group 'org.example'
+version '1.0-SNAPSHOT'
+

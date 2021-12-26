@@ -1,0 +1,61 @@
+ServerOneClient.java
+ ServerOneClient
+utility/EmptyQueueException.java
+ utility.EmptyQueueException
+mining/DiscreteItem.java
+ mining.DiscreteItem
+database/DbAccess.java
+ database.DbAccess
+utility/LinkList.java
+ utility.LinkList
+data/DiscreteAttribute.java
+ data.DiscreteAttribute
+data/ContinuousAttributeIterator.java
+ data.ContinuousAttributeIterator
+database/QUERY_TYPE.java
+ database.QUERY_TYPE
+mining/ComparatorGrowRate.java
+ mining.ComparatorGrowRate
+data/Attribute.java
+ data.Attribute
+data/EmptySetException.java
+ data.EmptySetException
+data/Data.java
+ data.Data
+data/ContinuousAttribute.java
+ data.ContinuousAttribute
+mining/EmergingPattern.java
+ mining.EmergingPattern
+mining/FrequentPatternMiner.java
+ mining.FrequentPatternMiner
+database/TableData.java
+ database.TableData
+ database.TableData$TupleData
+mining/Interval.java
+ mining.Interval
+mining/Item.java
+ mining.Item
+database/TableSchema.java
+ database.TableSchema
+ database.TableSchema$Column
+database/NoValueException.java
+ database.NoValueException
+mining/EmergingPatternException.java
+ mining.EmergingPatternException
+utility/Cella.java
+ utility.Cella
+mining/EmergingPatternMiner.java
+ mining.EmergingPatternMiner
+utility/Queue.java
+ utility.Queue
+ utility.Queue$Record
+database/DatabaseConnectionException.java
+ database.DatabaseConnectionException
+MultiServer.java
+ MultiServer
+mining/ContinuousItem.java
+ mining.ContinuousItem
+mining/FrequentPattern.java
+ mining.FrequentPattern
+utility/Puntatore.java
+ utility.Puntatore

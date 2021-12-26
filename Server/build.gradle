@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "MultiServer"
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('lib/mysql-connector-java-8.0.26.jar')
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
