@@ -6,7 +6,7 @@ public class MultiServer {
 
     private static final int PORT = 8080;
 
-    MultiServer() throws IOException{
+    private MultiServer() throws IOException{
         run();
     }
 
