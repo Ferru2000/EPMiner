@@ -5,9 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Gestisce l'accesso al DB per la lettura dei dati di training
- * @author Map Tutor
- *
+ * Questa classe gestisce l'accesso al DB per la lettura dei dati di training.
  */
 public class DbAccess {
 
@@ -22,8 +20,8 @@ public class DbAccess {
 	private Connection conn;
 
 	/**
-	 * Inizializza una connessione al DB
-	 * @throws DatabaseConnectionException eccezione
+	 * Metodo che inizializza una connessione al DB.
+	 * @throws DatabaseConnectionException Se vi è una eccezione durante l'accesso al database
 	 */
 	public void initConnection() throws DatabaseConnectionException{
 		String connectionString =  DBMS + "://" + SERVER + ":" + PORT + "/" + DATABASE
@@ -57,10 +55,18 @@ public class DbAccess {
 		}
 		
 	}
+
+	/**
+	 * Metodo che restitusice il gestore della connessione al database.
+	 * @return Gestore della connessione
+	 */
 	public  Connection getConnection(){
 		return conn;
 	}
 
+	/**
+	 * Metodo che chiude la connessione con il database.
+	 */
 	public  void closeConnection() {
 		try {
 			conn.close();

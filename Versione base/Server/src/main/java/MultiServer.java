@@ -43,6 +43,7 @@ public class MultiServer {
 
     /**
      * Metodo di avvio del server.
+     * @param args Parametro non utilizzato
      * @throws IOException Se vi e' una eccezione di input/output
      */
     public static void main(String[] args) throws IOException {
