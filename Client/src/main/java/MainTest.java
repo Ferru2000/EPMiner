@@ -50,12 +50,12 @@ public class MainTest {
             do {
                 System.out.println("Inserire valore minimo supporto (minsup>0 e minsup<=1):");
                 minsup = Keyboard.readFloat();
-            } while (minsup <= 0 || minsup > 1);
+            } while (minsup <= 0 || minsup > 1 || Float.isNaN(minsup));
 
             do {
                 System.out.println("Inserire valore minimo grow rate (minGr>=1):");
                 minGr = Keyboard.readFloat();
-            } while (minGr < 1);
+            } while (minGr < 1 || Float.isNaN(minGr));
 
 
             System.out.println("Tabella target:");
@@ -70,11 +70,11 @@ public class MainTest {
                 out.writeObject(minGr);
                 out.writeObject(targetName);
                 out.writeObject(backgroundName);
+
                 String fpMiner = (String) (in.readObject());
-
                 System.out.println(fpMiner);
-                String epMiner = (String) (in.readObject());
 
+                String epMiner = (String) (in.readObject());
                 System.out.println(epMiner);
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
@@ -82,7 +82,6 @@ public class MainTest {
 
             System.out.println("Vuoi ripetere?(s/n)");
             risp = Keyboard.readChar();
-            out.writeObject(risp);
         } while (risp != 'n');
 
     }
