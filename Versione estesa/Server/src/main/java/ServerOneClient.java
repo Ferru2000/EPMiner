@@ -35,7 +35,6 @@ public class ServerOneClient extends Thread {
      */
     @Override
     public void run() {
-        char risposta;
         String targetName = "";
         String backgroundName = "";
         Float minsup;

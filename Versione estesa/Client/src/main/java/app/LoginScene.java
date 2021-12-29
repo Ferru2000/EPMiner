@@ -10,6 +10,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+/**
+ * Questa classe gestisce l'interfaccia utente per l'inserimento dei parametri
+ * del server.
+ */
 public class LoginScene {
 
     private String address;
@@ -21,17 +25,28 @@ public class LoginScene {
     private Button submitButton, defaultButton;
     private static LoginScene instance = null;
 
+    /**
+     * Metodo che restituisce il singleton della classe.
+     * @return Singleton della classe
+     */
     public static LoginScene getLoginScene(){
         if(instance == null)
             instance = new LoginScene();
         return instance;
     }
 
+    /**
+     * Costruttore privato.
+     */
     private LoginScene(){
 
     }
 
-    public void setParameterStage(Stage primaryStage) {
+    /**
+     * Metodo che costruisce l'interfaccia per l'inserimento dei parametri.
+     * @param primaryStage Stage su cui inserire la scena
+     */
+    public void buildLoginScene(Stage primaryStage) {
         stage = primaryStage;
 
         anchorPane = new AnchorPane();
@@ -71,7 +86,7 @@ public class LoginScene {
                 port = portText.getText();
 
                 if(check()) {
-                    MainScene.getMainScene().buildUI();
+                    MainScene.getMainScene().buildMainScene();
                     stage.close();
                 }
 
@@ -102,14 +117,26 @@ public class LoginScene {
         stage.show();
     }
 
+    /**
+     * Metodo che restituisce l'indirizzo inserito nel TextField addressText.
+     * @return Indirizzo presente nel TextField addressText
+     */
     public String getAddress() {
         return address;
     }
 
+    /**
+     * Metodo che restituisce la porta inserita nel TextField portText.
+     * @return Porta presente nel TextField portText
+     */
     public String getPort() {
         return port;
     }
 
+    /**
+     * Metodo che controlla se entrambi i campia siano stati compilati.
+     * @return Booleano che indica se entrambi i campi sono compilati o meno
+     */
     private boolean check() {
         if(address.isEmpty() || port.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -120,5 +147,4 @@ public class LoginScene {
         }
         return true;
     }
-
 }

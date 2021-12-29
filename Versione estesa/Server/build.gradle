@@ -25,5 +25,10 @@ task myJavadocs(type: Javadoc) {
     options.memberLevel = JavadocMemberLevel.PRIVATE
 }
 
+javadoc {
+    source = sourceSets.main.allJava
+    options.memberLevel = JavadocMemberLevel.PRIVATE
+}
+
 group 'org.example'
 version '1.0-SNAPSHOT'
