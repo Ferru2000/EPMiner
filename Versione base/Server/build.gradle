@@ -20,7 +20,7 @@ dependencies {
     implementation files('lib/mysql-connector-java-8.0.26.jar')
 }
 
-task myJavadocs(type: Javadoc) {
+javadoc {
     source = sourceSets.main.allJava
     options.memberLevel = JavadocMemberLevel.PRIVATE
 }

@@ -7,7 +7,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -15,6 +14,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Questa classe gestisce l'interfaccia utente per l'inserimento dei dati della richiesta
+ * da inviare al server.
+ */
 public class MainScene {
     private RadioButton radioOption_1, radioOption_2;
     private TextField minSupTextField, minGrowTextField, targetTextField,backgroundTextField;
@@ -23,17 +26,27 @@ public class MainScene {
 
     private static MainScene instance = null;
 
+     /**
+     * Metodo che restituisce il singleton della classe.
+     * @return Singleton della classe
+     */
     public static MainScene getMainScene(){
         if(instance == null)
             instance = new MainScene();
         return instance;
     }
 
+    /**
+     * Costruttore privato.
+     */
     private MainScene(){
 
     }
 
-    void buildUI() {
+    /**
+     * Metodo che costruisce l'interfaccia per l'inserimento dei dati da inviare al server.
+     */
+    void buildMainScene() {
         // gridPane setup
         stage = new Stage();
 
@@ -69,10 +82,10 @@ public class MainScene {
 
         queryButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                MainTest mainTest = new MainTest();
+                QueryClass queryClass = new QueryClass();
                 try {
                     if(check()) {
-                        if(!mainTest.executeQuery(LoginScene.getLoginScene().getAddress(), LoginScene.getLoginScene().getPort())) {
+                        if(!queryClass.executeQuery(LoginScene.getLoginScene().getAddress(), LoginScene.getLoginScene().getPort())) {
                             frequentPatternText.setText("");
                             emergingPatternText.setText("");
                             alertError("Attenzione, qualcosa è andato storto");
@@ -90,7 +103,7 @@ public class MainScene {
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
                 stage.close();
-                LoginScene.getLoginScene().setParameterStage(new Stage());
+                LoginScene.getLoginScene().buildLoginScene(new Stage());
             }
         });
 
@@ -212,6 +225,10 @@ public class MainScene {
         stage.setMaximized(true);
     }
 
+    /**
+     * Metodo che controlla che tutti i campi non siano vuoti e il formato dei dati inserito sia corretto.
+     * @return Booleano che indica se tutti i campi sono stati compilati in modo corretto o meno
+     */
     private boolean check() {
         double number;
 
@@ -248,34 +265,58 @@ public class MainScene {
         alert.show();
     }
 
+    /**
+     * Metodo che restituisce il TextField del minimo supporto.
+     * @return TextField del minimo supporto
+     */
     public TextField getMinSupTextField() {
         return minSupTextField;
     }
 
+    /**
+     * Metodo che restituisce il TextField del minimo grow rate.
+     * @return TextField del minimo supporto
+     */
     public TextField getMinGrowTextField() {
         return minGrowTextField;
     }
 
+    /**
+     * Metodo che restituisce il TextField della tabella target.
+     * @return TextField della tabella target
+     */
     public TextField getTargetTextField() {
         return targetTextField;
     }
 
+    /**
+     * Metodo che restituisce il TextField della tabella di background.
+     * @return TextField della tabella di background
+     */
     public TextField getBackgroundTextField() {
         return backgroundTextField;
     }
 
+    /**
+     * Metodo che restituisce il RadioButton corrispondente alla scelta Nuova Scoperta.
+     * @return RadioButton della scelta Nuova Scoperta
+     */
     public RadioButton getRadioOption_1() {
         return radioOption_1;
     }
 
-    public RadioButton getRadioOption_2() {
-        return radioOption_2;
-    }
-
+    /**
+     * Metodo che restituisce la TextArea relativa ai pattern frequenti.
+     * @return TextArea dei pattern frequenti
+     */
     public TextArea getFrequentPatternText() {
         return frequentPatternText;
     }
 
+    /**
+     * Metodo che restituisce la TextArea relativa ai pattern emergenti.
+     * @return TextArea dei pattern emergenti
+     */
     public TextArea getEmergingPatternText() {
         return emergingPatternText;
     }

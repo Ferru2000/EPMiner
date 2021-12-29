@@ -56,3 +56,12 @@ task createJar(type: Copy) {
     into "$buildDir/libs"
     from configurations.runtime
 }
+
+javadoc {
+    inputs.property("module-info.java", moduleName)
+    doFirst {
+        exclude "**/module-info.java"
+
+    }
+    options.memberLevel = JavadocMemberLevel.PRIVATE
+}
