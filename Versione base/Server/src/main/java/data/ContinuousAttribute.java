@@ -26,7 +26,7 @@ public class ContinuousAttribute extends Attribute implements Iterable<Float> {
      * Metodo che restituisce l'attributo min.
      * @return Estremo inferiore dell'intervallo
      */
-    public float getMin() {
+    float getMin() {
         return min;
     }
 
@@ -34,7 +34,7 @@ public class ContinuousAttribute extends Attribute implements Iterable<Float> {
      * Metodo che restituisce l'attributo max.
      * @return Estremo superiore dell'intervallo
      */
-    public float getMax() {
+    float getMax() {
         return max;
     }
 
@@ -45,6 +45,5 @@ public class ContinuousAttribute extends Attribute implements Iterable<Float> {
     public Iterator<Float> iterator() {
         return new ContinuousAttributeIterator(min, max, 5);
     }
-
 
 }

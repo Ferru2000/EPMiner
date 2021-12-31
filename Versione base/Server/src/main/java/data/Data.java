@@ -122,9 +122,5 @@ public class Data {
             value += data[i][attributeSet.size() - 1] + "\n";
         }
         return value;
-
-
     }
-
-
 }

@@ -23,7 +23,7 @@ public abstract class Attribute implements Serializable {
      * Metodo che restituisce il nome dell'attributo.
      * @return Nome dell'attributo
      */
-    public String getName() {
+    String getName() {
         return name;
     }
 

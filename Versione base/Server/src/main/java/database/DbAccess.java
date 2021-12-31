@@ -60,14 +60,14 @@ public class DbAccess {
 	 * Metodo che restitusice il gestore della connessione al database.
 	 * @return Gestore della connessione
 	 */
-	public  Connection getConnection(){
+	public Connection getConnection(){
 		return conn;
 	}
 
 	/**
 	 * Metodo che chiude la connessione con il database.
 	 */
-	public  void closeConnection() {
+	public void closeConnection() {
 		try {
 			conn.close();
 		} catch (SQLException e) {

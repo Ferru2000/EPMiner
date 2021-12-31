@@ -22,7 +22,7 @@ public class EmergingPattern extends FrequentPattern implements Serializable {
      * Metodo che restituisce il grow rate del pattern emergente.
      * @return Grow rate del pattern
      */
-    public float getGrowrate() {
+    float getGrowrate() {
         return this.growrate;
     }
 
