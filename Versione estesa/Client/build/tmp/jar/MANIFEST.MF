@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Automatic-Module-Name: app
-Main-Class: app.Main
-

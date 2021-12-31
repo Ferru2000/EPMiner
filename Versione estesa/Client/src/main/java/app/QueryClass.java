@@ -6,33 +6,71 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * Questa classe gestisce l'esecuzione della richiesta da parte del client.
  */
 public class QueryClass {
 
+    private Socket socket = null;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
+
+    /**
+     * Metodo che inizializza la connessione con il server.
+     * @param address Indirizzo del server
+     * @param port Porta del server
+     * @throws IOException Eccezione IOException
+     */
+    void initializeConnection(String address, String port) throws IOException {
+        if (socket == null) {
+            InetAddress addr = null;
+
+            try {
+                addr = InetAddress.getByName(address);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+            socket = new Socket(addr, new Integer(port));
+
+            out = new ObjectOutputStream(socket.getOutputStream());
+            in = new ObjectInputStream(socket.getInputStream());
+            System.out.println("Apertura connessione");
+        }
+    }
+
+    /**
+     * Metodo che chiude la connessione con il server.
+     */
+    void closeConnection() {
+        if(socket != null) {
+            try {
+                socket.close();
+                System.out.println("Chiusura connessione");
+                out.close();
+                in.close();
+
+                // Dato che non è possibile aprire di nuovo una socke chiusa, setto a null
+                // il socket in modo tale da crearne uno nuvo alla successiva richiesta
+                socket = null;
+                out = null;
+                in = null;
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+
+        }
+    }
+
     /**
      * Metodo che prende i valori compilati nei form dell'interfaccia e li manda al server
      * per effettuare la richiesta.
-     * @param address Indirizzo del server
-     * @param port Porta del processo del server
      * @return Booleano che indica se la richiesta è andata a buon fine o meno
      * @throws IOException Eccezione IOException
      * @throws ClassNotFoundException Eccezione ClassNotFoundException
      */
-    public boolean executeQuery(String address, String port) throws IOException, ClassNotFoundException {
-
-        InetAddress addr = InetAddress.getByName(address);
-        System.out.println("addr = " + address + "\nport=" + port);
-        Socket socket = new Socket(addr, new Integer(port));
-        System.out.println(socket);
-
-
-        ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-        ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-        // stream con richieste del client
-
+    public boolean executeQuery() throws IOException, ClassNotFoundException {
 
         // get RadioButton choice
         int opzione;
@@ -75,27 +113,15 @@ public class QueryClass {
                 return false;
             }
 
-
-            MainScene.getMainScene().getFrequentPatternText().setText(fpMiner);
-            System.out.println(fpMiner);
-            MainScene.getMainScene().getEmergingPatternText().setText(epMiner);
-            System.out.println(epMiner);
-
             if (fpMiner.equals("Errore") || epMiner.equals("Errore")) {
                 esito = false;
             } else {
                 MainScene.getMainScene().getFrequentPatternText().setText(fpMiner);
-                System.out.println(fpMiner);
                 MainScene.getMainScene().getEmergingPatternText().setText(epMiner);
-                System.out.println(epMiner);
             }
 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            socket.close();
-            out.close();
-            in.close();
         }
 
         return esito;

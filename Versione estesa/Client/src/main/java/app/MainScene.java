@@ -23,7 +23,7 @@ public class MainScene {
     private TextField minSupTextField, minGrowTextField, targetTextField,backgroundTextField;
     private TextArea frequentPatternText,emergingPatternText;
     private Stage stage;
-
+    private static QueryClass queryClass;
     private static MainScene instance = null;
 
      /**
@@ -31,8 +31,11 @@ public class MainScene {
      * @return Singleton della classe
      */
     public static MainScene getMainScene(){
-        if(instance == null)
+        if(instance == null) {
             instance = new MainScene();
+            queryClass = new QueryClass();
+        }
+
         return instance;
     }
 
@@ -82,18 +85,18 @@ public class MainScene {
 
         queryButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-                QueryClass queryClass = new QueryClass();
                 try {
+                    queryClass.initializeConnection(LoginScene.getLoginScene().getAddress(), LoginScene.getLoginScene().getPort());
                     if(check()) {
-                        if(!queryClass.executeQuery(LoginScene.getLoginScene().getAddress(), LoginScene.getLoginScene().getPort())) {
+                        if(!queryClass.executeQuery()) {
                             frequentPatternText.setText("");
                             emergingPatternText.setText("");
-                            alertError("Attenzione, qualcosa è andato storto");
+                            alertError("Attenzione, qualcosa e' andato storto");
                         }
                     }
 
-                } catch (IOException | ClassNotFoundException ioException) {
-                    ioException.printStackTrace();
+                } catch (IOException | ClassNotFoundException e1) {
+                    e1.printStackTrace();
                 }
             }
         });
@@ -102,6 +105,7 @@ public class MainScene {
 
         backButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
+                queryClass.closeConnection();
                 stage.close();
                 LoginScene.getLoginScene().buildLoginScene(new Stage());
             }
@@ -245,8 +249,8 @@ public class MainScene {
             }
         }catch (NumberFormatException e) {
             alertError("Attenzione, assicurati che il formato dei valori sia il seguente:" +
-                    "\n[numero].[numero] se il numero è decimale" +
-                    "\n[numero] se il numero è intero");
+                    "\n[numero].[numero] se il numero e' decimale" +
+                    "\n[numero] se il numero e' intero");
             return false;
         }
 
