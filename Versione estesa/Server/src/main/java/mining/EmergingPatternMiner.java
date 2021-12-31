@@ -53,7 +53,7 @@ public class EmergingPatternMiner implements Iterable<EmergingPattern>, Serializ
      * @param fp FrequentPattern di cui calcolare il grow rate
      * @return growrate di fp
      */
-    float computeGrowRate(Data dataBackground, FrequentPattern fp) {
+    private float computeGrowRate(Data dataBackground, FrequentPattern fp) {
 
         return fp.getSupport() / fp.computeSupport(dataBackground);
     }

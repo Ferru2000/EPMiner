@@ -191,7 +191,7 @@ public class FrequentPatternMiner implements Iterable<FrequentPattern> , Seriali
      * Metodo che restituisce la lista dei pattern frequenti.
      * @return Lista di FrequentPattern
      */
-    public List<FrequentPattern> getOutputFP() {
+    List<FrequentPattern> getOutputFP() {
         return outputFP;
     }
 

@@ -12,7 +12,7 @@ public class ContinuousItem extends Item{
      * @param attribute Attributo dell'item
      * @param value Valore dell'item
      */
-    public ContinuousItem(ContinuousAttribute attribute, Interval value){
+    ContinuousItem(ContinuousAttribute attribute, Interval value){
         super(attribute, value);
     }
 

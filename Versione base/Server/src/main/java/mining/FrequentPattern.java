@@ -52,7 +52,7 @@ public class FrequentPattern implements Iterable<Item>, Comparable<FrequentPatte
      * @param index Posizione dell'item da restituire
      * @return Item in posizione index
      */
-    public Item getItem(int index) {
+    private Item getItem(int index) {
         return fp.get(index);
     }
 
@@ -60,7 +60,7 @@ public class FrequentPattern implements Iterable<Item>, Comparable<FrequentPatte
      * Metodo che restituisce il support del FrequentPattern.
      * @return support
      */
-    public float getSupport() {
+    float getSupport() {
         return support;
     }
 
@@ -68,7 +68,7 @@ public class FrequentPattern implements Iterable<Item>, Comparable<FrequentPatte
      * Metodo che restituisce la lunghezza del pattern.
      * @return lunghezza del pattern
      */
-    public int getPatternLength() {
+    int getPatternLength() {
         return fp.size();
     }
 
@@ -76,7 +76,7 @@ public class FrequentPattern implements Iterable<Item>, Comparable<FrequentPatte
      * Metodo che assegna alla variabile d'istanza pattern il valore passato come parametro.
      * @param support Supporto da assegnare all'attributo della classe support
      */
-    public void setSupport(float support) {
+    void setSupport(float support) {
         this.support = support;
     }
 

@@ -25,7 +25,7 @@ abstract class Item implements Serializable {
      * Metodo che restituisce l'attributo dell'item.
      * @return Attributo dell'item
      */
-    public Attribute getAttribute() {
+     Attribute getAttribute() {
         return this.attribute;
     }
 
@@ -33,7 +33,7 @@ abstract class Item implements Serializable {
      * Metodo che restituisce il valore dell'item.
      * @return Valore dell'item
      */
-    public Object getValue() {
+     Object getValue() {
         return value;
     }
 
