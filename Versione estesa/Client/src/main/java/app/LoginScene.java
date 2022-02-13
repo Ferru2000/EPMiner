@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 /**
  * Questa classe gestisce l'interfaccia utente per l'inserimento dei parametri
  * del server.
@@ -93,7 +95,6 @@ public class LoginScene {
             }
         });
 
-
         defaultButton = new Button("Usa impostazioni di default");
         defaultButton.setAlignment(Pos.CENTER);
         defaultButton.setFocusTraversable(false);
@@ -111,9 +112,11 @@ public class LoginScene {
         anchorPane.getChildren().addAll(addressText, portText, submitButton, defaultButton);
 
         Scene scene = new Scene(anchorPane, 400, 400);
-
+        String css = Objects.requireNonNull(this.getClass().getResource("Application.css")).toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setResizable(false);
         stage.setScene(scene);
+        stage.setTitle("EPMiner");
         stage.show();
     }
 

@@ -1,0 +1,8 @@
+-classpath 'D:\\Utenti\\Francesco\\Desktop\\Intellij Workspace\\ProgettoMAP\\Versione base\\Client\\build\\classes\\java\\main;D:\\Utenti\\Francesco\\Desktop\\Intellij Workspace\\ProgettoMAP\\Versione base\\Client\\build\\resources\\main'
+-d 'D:\\Utenti\\Francesco\\Desktop\\Intellij Workspace\\ProgettoMAP\\Versione base\\Client\\build\\docs\\javadoc'
+-doctitle 'Client 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'Client 1.0-SNAPSHOT API'
+'D:\\Utenti\\Francesco\\Desktop\\Intellij Workspace\\ProgettoMAP\\Versione base\\Client\\src\\main\\java\\keyboardinput\\Keyboard.java'
+'D:\\Utenti\\Francesco\\Desktop\\Intellij Workspace\\ProgettoMAP\\Versione base\\Client\\src\\main\\java\\MainTest.java'

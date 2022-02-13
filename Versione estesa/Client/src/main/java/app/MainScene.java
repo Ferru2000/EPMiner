@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 /**
  * Questa classe gestisce l'interfaccia utente per l'inserimento dei dati della richiesta
@@ -129,8 +130,8 @@ public class MainScene {
 
         radioOption_1.setSelected(true);
 
-        GridPane.setMargin(radioOption_1, new Insets(0,0,0,0));
-        GridPane.setMargin(radioOption_2, new Insets(50,0,0,0));
+        GridPane.setMargin(radioOption_1, new Insets(30,0,0,0));
+        GridPane.setMargin(radioOption_2, new Insets(80,0,0,0));
 
         GridPane.setConstraints(radioOption_1, 0, 0);
         GridPane.setConstraints(radioOption_2, 0, 0);
@@ -170,8 +171,8 @@ public class MainScene {
         minSupTextField = new TextField("");
         minGrowTextField = new TextField("");
 
-        GridPane.setMargin(minSupTextField, new Insets(0,0,0,100));
-        GridPane.setMargin(minGrowTextField, new Insets(60,0,0,100));
+        GridPane.setMargin(minSupTextField, new Insets(0,0,0,120));
+        GridPane.setMargin(minGrowTextField, new Insets(60,0,0,120));
 
         GridPane.setConstraints(minSupTextField, 0, 1);
         GridPane.setConstraints(minGrowTextField, 0, 1);
@@ -221,10 +222,10 @@ public class MainScene {
         */
 
         Scene scene = new Scene(gridPane, 800, 800);
-        //String css = this.getClass().getResource("application.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = Objects.requireNonNull(this.getClass().getResource("Application.css")).toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setScene(scene);
-        stage.setTitle("MAP Project");
+        stage.setTitle("EPMiner");
         stage.show();
         stage.setMaximized(true);
     }

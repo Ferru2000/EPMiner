@@ -38,6 +38,10 @@ jar {
         attributes('Automatic-Module-Name': moduleName)
         attributes "Main-Class": "app.Main"
     }
+
+    from('src/main/java') {
+        include '**/*.css'
+    }
 }
 
 compileJava {
